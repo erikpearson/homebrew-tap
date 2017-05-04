@@ -1,0 +1,39 @@
+diff -crB regex-markup-0.10.0/src/cacheline.c regex-markup-0.10.0-patched/src/cacheline.c
+*** regex-markup-0.10.0/src/cacheline.c	2005-05-10 08:27:12.000000000 -0500
+--- regex-markup-0.10.0-patched/src/cacheline.c	2017-05-04 00:30:37.000000000 -0500
+***************
+*** 22,27 ****
+--- 22,28 ----
+  #include <stdbool.h>		/* Gnulib/C99/POSIX */
+  #include <stdlib.h>		/* C89 */
+  #include <stdio.h>		/* C89 */
++ #include <locale.h>             /* C89 */
+  #include "gettext.h"		/* Gnulib */
+  #define _(String) gettext(String)
+  #include "getline.h"		/* Gnulib/GNU Libc */
+diff -crB regex-markup-0.10.0/src/common/hmap.h regex-markup-0.10.0-patched/src/common/hmap.h
+*** regex-markup-0.10.0/src/common/hmap.h	2005-05-20 02:23:09.000000000 -0500
+--- regex-markup-0.10.0-patched/src/common/hmap.h	2017-05-03 23:51:54.000000000 -0500
+***************
+*** 24,29 ****
+--- 24,30 ----
+  #include <stdint.h>
+  #include <stdlib.h>
+  // XXX: comparison_fn_t needed if not provided!
++ typedef int (*comparison_fn_t) (const void *, const void *);
+  
+  typedef struct _HMap HMap;
+  typedef struct _HMapIterator HMapIterator;
+diff -crB regex-markup-0.10.0/src/remark.c regex-markup-0.10.0-patched/src/remark.c
+*** regex-markup-0.10.0/src/remark.c	2005-05-12 11:07:44.000000000 -0500
+--- regex-markup-0.10.0-patched/src/remark.c	2017-05-04 00:14:56.000000000 -0500
+***************
+*** 26,31 ****
+--- 26,32 ----
+  #include <signal.h>
+  #include <stdlib.h>
+  #include <string.h>
++ #include <locale.h>
+  /* gnulib */
+  #include <getopt.h>
+  #include "dirname.h"
